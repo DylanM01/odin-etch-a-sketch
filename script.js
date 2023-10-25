@@ -1,14 +1,16 @@
 let isDrawing = false;
 
-function makeGrid(width, height) {
+function createGrid(size) {
     const main = document.getElementById("main");
+    main.innerHTML = ''; // Clear the existing grid
 
-    for (let i = 0; i < width; i++) {
-        for (let j = 0; j < height; j++) {
-            const cell = document.createElement("div");
-            cell.classList.add("cell");
-            main.appendChild(cell);
-        }
+    main.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    main.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    for (let i = 0; i < size * size; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("cell");
+        main.appendChild(cell);
     }
 }
 
@@ -33,5 +35,20 @@ function addHoverEffect() {
     });
 }
 
-makeGrid(16, 16); // Example: create a 16x16 grid
+function promptGridSize() {
+    let newSize = prompt("Enter the number of squares per side (max: 100):");
+    newSize = parseInt(newSize);
+
+    if (!isNaN(newSize) && newSize > 0 && newSize <= 100) {
+        createGrid(newSize);
+        addHoverEffect();
+    } else {
+        alert("Please enter a valid number between 1 and 100.");
+    }
+}
+
+document.getElementById("newGridButton").addEventListener("click", promptGridSize);
+
+// Initial grid creation
+createGrid(16); // Example: create a 16x16 grid
 addHoverEffect();

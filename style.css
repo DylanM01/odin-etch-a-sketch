@@ -1,16 +1,19 @@
-body {
+#main-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     margin: 0;
+    height: 100vh;
 }
 
 #main {
     display: grid;
-    grid-template-columns: repeat(16, 30px); /* Adjust the width of each cell */
-    grid-template-rows: repeat(16, 30px); /* Adjust the height of each cell */
+    margin-top: 20px;
+    width: 50%;
+    grid-template-columns: repeat(16, 40px); /* Adjust the width of each cell */
+    grid-template-rows: repeat(16, 40px); /* Adjust the height of each cell */
     gap: 1px;
+    height: 50%;
 }
 
 .cell {
@@ -22,4 +25,8 @@ body {
 
 .cell:hover {
     background: black;
+}
+
+#newGridButton {
+    margin-top: 25px;
 }
